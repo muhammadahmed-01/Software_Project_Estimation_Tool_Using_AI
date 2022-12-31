@@ -1,0 +1,11 @@
+
+.idea/
+speua_env/
+Project Cost Estimation Prediction - Copy.py
+imdb_weights_con1vd.hdf5
+glove.6B.50d.txt
+*.pyc
+.idea/vcs.xml
+.idea/modules.xml
+.idea/misc.xml
+.idea/inspectionProfiles/profiles_settings.xml

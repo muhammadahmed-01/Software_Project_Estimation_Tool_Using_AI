@@ -1,0 +1,41 @@
+Skill,Complexity,task_name,subtask_name,Duration
+3,1,Home page,API to validate and fetch hot products,3
+2,0,Home page,API to validate and fetch new products,2
+3,1,Categories page,API to validate and fetch all categories along with the products that belong to each category,3
+2,0,Categories page,API to validate and fetch a single category,2
+2,0,Categories page,API to filter and sort results,2
+2,0,PLP,API to validate and fetch list of products,2
+3,1,PLP,API to filter and sort results,3
+3,1,PLP,API to persist the chosen item in DB for cart,3
+3,1,PLP,API to persist the chosen item in DB for wishlist,3
+1,0,PDP,API to validate and fetch product details,1
+3,1,PDP,API to persist the chosen item in DB for cart,3
+3,1,PDP,API to persist the chosen item in DB for wishlist,3
+4,1,Cart,API to authenticate the user,4
+4,1,Cart,API to validate and fetch cart items,4
+4,1,Shipping Address,API to authenticate the user,4
+2,0,Shipping Address,API to validate and fetch the shipping address saved in customer profile (if it exists),2
+2,0,Shipping Address,API to save and validate customer address,2
+2,0,Shipping Address,API to validate and fetch city and state names in which the business operates,2
+4,1,Delivery Method,API to authenticate the user,4
+2,0,Delivery Method,API to validate and fetch all delivery methods supported by the business,2
+4,1,Payment Method,API to authenticate the user,4
+2,0,Payment Method,API to validate and fetch all payment methods supported by the business,2
+4,1,Review Info,API to authenticate the user,4
+2,0,Review Info,API to validate and fetch the cart items,2
+2,0,Review Info,API to validate and fetch the shipping address,2
+2,0,Review Info,API to validate and fetch the delivery,2
+2,0,Review Info,API to validate and fetch the payment method,2
+4,1,Order Success/Cancellation,API to authenticate the user,4
+3,1,Order Success/Cancellation,API to persist the order details in DB,3
+3,1,Order Success/Cancellation,API to validate and send the order information to the server for approval. Response is either success or cancelled,3
+4,1,Dashboard,API to authenticate the user,4
+3,1,Dashboard,"APIs to show stats such as profit, orders, sales etc",3
+4,1,Orders,API to authenticate the user,4
+3,1,Orders,"API to validate and fetch all orders (pending, cancelled and completed)",3
+4,1,Wishlist,API to authenticate the user,4
+3,1,Wishlist,API to fetch and validate the wishlist,3
+4,1,Billing,API to authenticate the user,4
+5,2,Billing,"API to validate and view, add or change the billing method",5
+4,1,Settings,API to authenticate the user,4
+3,1,Settings,API to validate and view or change profile settings,3
