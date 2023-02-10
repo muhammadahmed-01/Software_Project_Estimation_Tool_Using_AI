@@ -11,6 +11,16 @@ import Container from "@mui/material/Container"
 import {createTheme, ThemeProvider} from "@mui/material/styles"
 import MuiAlert from '@mui/material/Alert'
 import EDService from "../service/estimation.service"
+// import { ChatGPTAPI } from 'chatgpt'
+
+// async function example() {
+//   const api = new ChatGPTAPI({
+//     apiKey: process.env.OPENAI_API_KEY
+//   })
+//
+//   const res = await api.sendMessage('Hello World!')
+//   console.log(res.text)
+// }
 
 const theme = createTheme()
 
@@ -44,7 +54,25 @@ export default function SignUp() {
 
   function onChangeEstimateTime(e){
     setEstimateTime(e.target.value)
+    let data = {
+      skill: skill,
+      complexity: complexity,
+      task_name: task_name,
+      subtask_name: subtask_name,
+      estimate_time: estimate_time
+    }
+    EDService.setEstimation(data)
+      .then(response => {
+        console.log("response = " + JSON.stringify(response.data))
+      }).catch(e => {
+        console.log(e);
+    });
   }
+
+  // useEffect(() => {
+  //   example()
+  //   }, []
+  // )
 
   function getEstimations(){
     let data = {

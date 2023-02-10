@@ -91,7 +91,7 @@ export default function Sidebar() {
             <ListItemText primary="Estimates"/>
           </ListItemButton>
         </Link>
-        <Link to="/doctors-list" >
+        <Link to="/dashboard?status=rejected">
           <ListItemButton>
             <ListItemIcon>
               <AssignmentTurnedInIcon/>
@@ -99,7 +99,7 @@ export default function Sidebar() {
             <ListItemText primary="Rejected"/>
           </ListItemButton>
         </Link>
-        <Link to="/my-appointments" >
+        <Link to="/dashboard?status=approved">
           <ListItemButton>
             <ListItemIcon>
               <PersonIcon/>
@@ -107,7 +107,7 @@ export default function Sidebar() {
             <ListItemText primary="Approved"/>
           </ListItemButton>
         </Link>
-        <Link to="/booking-form" >
+        <Link to="/dashboard?status=pending">
           <ListItemButton>
             <ListItemIcon>
               <BoltIcon/>
@@ -115,15 +115,8 @@ export default function Sidebar() {
             <ListItemText primary="Pending"/>
           </ListItemButton>
         </Link>
-        <Link to="/booking-form" >
-          <ListItemButton>
-            <ListItemIcon>
-              <BoltIcon/>
-            </ListItemIcon>
-            <ListItemText primary="Settings"/>
-          </ListItemButton>
-        </Link>
         <Divider sx={{my: 1}} />
+        <Typography sx={{marginLeft: "5%"}} variant={"body2"}>MY PROJECTS</Typography>
         <Link to="/doctors-list" >
           <ListItemButton>
             <ListItemIcon>
@@ -138,22 +131,6 @@ export default function Sidebar() {
               {/*<PersonIcon/>*/}
             </ListItemIcon>
             <ListItemText primary="Approved"/>
-          </ListItemButton>
-        </Link>
-        <Link to="/booking-form" >
-          <ListItemButton>
-            <ListItemIcon>
-              {/*<BoltIcon/>*/}
-            </ListItemIcon>
-            <ListItemText primary="Pending"/>
-          </ListItemButton>
-        </Link>
-        <Link to="/booking-form" >
-          <ListItemButton>
-            <ListItemIcon>
-              {/*<BoltIcon/>*/}
-            </ListItemIcon>
-            <ListItemText primary="Settings"/>
           </ListItemButton>
         </Link>
         {/* {secondaryListItems} */}
