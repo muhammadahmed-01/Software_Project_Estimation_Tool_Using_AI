@@ -1,7 +1,5 @@
 import React from "react";
 import {Divider, Typography} from "@mui/material";
-// import {useAuth} from "../contexts/AuthContext";
-// import { useRouter } from 'next/router'
 import {styled} from "@mui/material/styles";
 import MuiDrawer from "@mui/material/Drawer";
 import Toolbar from "@mui/material/Toolbar";
@@ -11,10 +9,6 @@ import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import ExitToAppIcon from "@mui/icons-material/ExitToApp";
-// import {useSelector, useDispatch} from "redux";
-// import {actionCreators} from "../state";
-import {bindActionCreators} from "redux";
 import {Link} from "react-router-dom";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import AssignmentTurnedInIcon from "@mui/icons-material/AssignmentTurnedIn";
@@ -47,13 +41,7 @@ const Drawer = styled(MuiDrawer, {shouldForwardProp: (prop) => prop !== "open"})
   },
 }));
 
-export default function Sidebar() {
-  // const open = useSelector((state) => state.state);
-  // const {logout} = useAuth();
-  // const dispatch = useDispatch();
-  // const router = useRouter()
-  // const {toggleDrawer} = bindActionCreators(actionCreators, dispatch);
-
+export default function EstimatorSidebar() {
   async function handleLogout() {
     try {
       // await logout();

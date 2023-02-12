@@ -8,8 +8,26 @@ import {
   Typography
 } from "@mui/material";
 import PropTypes from "prop-types";
+import TextField from "@mui/material/TextField";
+import {useState} from "react";
 
 export default function ReviewedTasks({status}){
+  const [isEditing, setIsEditing] = useState(false);
+  const [cellValue, setCellValue] = useState("4h");
+
+  const handleDoubleClick = () => {
+    setIsEditing(true);
+  };
+
+  const handleBlur = () => {
+    setIsEditing(false);
+    // onCellUpdate(cellValue);
+  };
+
+  const handleChange = event => {
+    setCellValue(event.target.value);
+  };
+
   // console.log("Your passed status: ", status)
   return (
     <React.Fragment>
@@ -31,7 +49,18 @@ export default function ReviewedTasks({status}){
             <TableCell>2</TableCell>
             <TableCell>3</TableCell>
             <TableCell></TableCell>
-            <TableCell align="right">4h</TableCell>
+            <TableCell align="right">
+              {/*See remaining code from chatgpt convo "Windows 10 Internet Connec"*/}
+              {isEditing ? (
+                <TextField
+                  value={cellValue}
+                  onBlur={handleBlur}
+                  onChange={handleChange}
+                />
+              ) : (
+                <div onDoubleClick={handleDoubleClick}>{cellValue}</div>
+              )}
+            </TableCell>
           </TableRow>
           <TableRow>
             <TableCell>Task 1</TableCell>

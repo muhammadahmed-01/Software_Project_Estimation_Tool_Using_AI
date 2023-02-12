@@ -1,16 +1,17 @@
-import React, {useState, useEffect} from "react"
-import Avatar from "@mui/material/Avatar"
-import Button from "@mui/material/Button"
-import CssBaseline from "@mui/material/CssBaseline"
-import TextField from "@mui/material/TextField"
-import Grid from "@mui/material/Grid"
-import Box from "@mui/material/Box"
-import LockOutlinedIcon from "@mui/icons-material/LockOutlined"
-import Typography from "@mui/material/Typography"
-import Container from "@mui/material/Container"
-import {createTheme, ThemeProvider} from "@mui/material/styles"
-import MuiAlert from '@mui/material/Alert'
-import EDService from "../service/estimation.service"
+import React, { useState, useEffect } from "react";
+import Button from "@mui/material/Button";
+import CssBaseline from "@mui/material/CssBaseline";
+import TextField from "@mui/material/TextField";
+import Grid from "@mui/material/Grid";
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
+import Container from "@mui/material/Container";
+import MuiAlert from "@mui/material/Alert";
+import Navbar from "./Navbar";
+import Toolbar from "@mui/material/Toolbar";
+import { Divider } from "@mui/material";
+import SubTask from "../components/SubTask";
+import { css } from "@emotion/react";
 // import { ChatGPTAPI } from 'chatgpt'
 
 // async function example() {
@@ -21,162 +22,124 @@ import EDService from "../service/estimation.service"
 //   const res = await api.sendMessage('Hello World!')
 //   console.log(res.text)
 // }
+export default function EstimateForm() {
+  const [error, setError] = useState("");
+  const [task_name, setTaskName] = useState("");
+  const [gridList, setGridList] = useState([]);
+  const [gridCount, setGridCount] = useState(1);
+  const [bottomPosition, setBottomPosition] = useState("433px");
+  const [topPosition, setTopPosition] = useState("500px");
 
-const theme = createTheme()
+  const handleAddGrid = () => {
+    const grids = Array.from({ length: gridCount }, (_, index) => (
+      <SubTask index={index} />
+    ));
 
-export default function SignUp() {
-  const [error, setError] = useState("")
-  const [skill, setSkill] = useState(0)
-  const [complexity, setComplexity] = useState(0)
-  const [task_name, setTaskName] = useState("")
-  const [subtask_name, setSubTaskName] = useState("")
-  const [estimate_time, setEstimateTime] = useState("")
+    setGridList(grids);
+    setGridCount(gridCount + 1);
+    setBottomPosition(parseInt(bottomPosition, 10) - 100 + "px");
+    setTopPosition(parseInt(topPosition, 10) + 100 + "px");
+  };
 
   const Alert = React.forwardRef(function Alert(props, ref) {
     return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
   });
 
-  function onChangeSkill(e){
-    setSkill(e.target.value)
-  }
-
-  function onChangeComplexity(e){
-    setComplexity(e.target.value)
-  }
-
-  function onChangeTaskName(e){
-    setTaskName(e.target.value)
-  }
-
-  function onChangeSubTaskName(e){
-    setSubTaskName(e.target.value)
-  }
-
-  function onChangeEstimateTime(e){
-    setEstimateTime(e.target.value)
-    let data = {
-      skill: skill,
-      complexity: complexity,
-      task_name: task_name,
-      subtask_name: subtask_name,
-      estimate_time: estimate_time
-    }
-    EDService.setEstimation(data)
-      .then(response => {
-        console.log("response = " + JSON.stringify(response.data))
-      }).catch(e => {
-        console.log(e);
-    });
-  }
-
-  // useEffect(() => {
-  //   example()
-  //   }, []
-  // )
-
-  function getEstimations(){
-    let data = {
-      skill: skill,
-      complexity: complexity,
-      task_name: task_name,
-      subtask_name: subtask_name
-    }
-    EDService.getEstimation(data)
-      .then(response => {
-        console.log("response = " + JSON.stringify(response.data))
-        setEstimateTime(response.data)
-    }).catch(e => {
-      console.log(e);
-    });
+  function onChangeTaskName(e) {
+    setTaskName(e.target.value);
   }
 
   return (
-    <ThemeProvider theme={theme}>
-      <Container component="main" maxWidth="xs">
-        <CssBaseline/>
-        <Box
-          sx={{
-            marginTop: 8,
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-          }}
-        >
-          <Avatar sx={{m: 1, bgcolor: "secondary.main"}}>
-            <LockOutlinedIcon/>
-          </Avatar>
-          <Typography component="h1" variant="h5">
-            New Estimate
-          </Typography>
-          <form noValidate style={{marginTop: 18}}>
-            {error && < Alert severity="error" sx={{mb: 4}}>{error}</Alert>}
-            <Grid container spacing={2}>
-              <Grid item xs={12}>
-                <TextField
-                  required
-                  fullWidth
-                  id="task_name"
-                  label="Task name"
-                  name="task_name"
-                  autoComplete="task_name"
-                  onChange={onChangeTaskName}
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  required
-                  fullWidth
-                  name="subtask_name"
-                  label="Subtask name"
-                  autoComplete="subtask_name"
-                  id="standard-adornment-password"
-                  type="text"
-                  variant="outlined"
-                  onChange={onChangeSubTaskName}
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  autoComplete="skillLevel"
-                  required
-                  fullWidth
-                  id="skillLevel"
-                  label="Recommended Skill level"
-                  name="skillLevel"
-                  onChange={onChangeSkill}
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  required
-                  fullWidth
-                  id="complexityLevel"
-                  label="Task Complexity Level"
-                  name="complexityLevel"
-                  autoComplete="complexityLevel"
-                  onChange={onChangeComplexity}
-                  onBlur={getEstimations}
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  required
-                  fullWidth
-                  id="estimateTime"
-                  label="Estimated Time Required"
-                  name="estimateTime"
-                  autoComplete="estimateTime"
-                  value={estimate_time}
-                  onChange={onChangeEstimateTime}
-                />
-              </Grid>
+    <Box sx={{ display: "flex" }}>
+      <CssBaseline />
+      <Navbar username={"John Carmack"} />
+      <Box
+        component="main"
+        sx={{
+          backgroundColor: (theme) =>
+            theme.palette.mode === "light" ? theme.palette.grey[100] :
+              theme.palette.grey[900],
+          flexGrow: 1,
+          height: "100vh",
+          overflow: "auto"
+        }}
+      >
+        <Toolbar />
+        <Container sx={{ mt: 4, mb: 4 }} maxWidth={"xl"}>
+          {/* {error && <Alert variant="danger">{error}</Alert>} */}
+          <Grid container spacing={3} sx={{ flexDirection: "column" }}>
+            <Typography sx={{
+              paddingLeft: 3, paddingTop: 3,
+              fontFamily: "Inter, sans-serif", fontStyle: "normal",
+              fontWeight: 600, fontSize: "46px", lineHeight: "56px",
+              textTransform: "capitalize"
+            }} component="h1"
+                        variant="h4" color="inherit">Grocery
+              Store</Typography>
+            <Grid item xs={2} md={2} lg={2}>
+              <TextField
+                required
+                id="task_name"
+                label="Task name"
+                name="task_name"
+                autoComplete="task_name"
+                onChange={onChangeTaskName}
+              />
             </Grid>
-            <Button type="submit" fullWidth variant="contained" sx={{mt: 3, mb: 2}}>
-              Create Estimate
-            </Button>
-          </form>
-        </Box>
-      </Container>
-    </ThemeProvider>
+            <Grid item xs={2} md={2} lg={2}>
+              <Button variant={"contained"} sx={{
+                backgroundColor: "#0048D9",
+                color: "white"
+              }} onClick={handleAddGrid}>
+                Create subtask
+              </Button>
+            </Grid>
+            <Divider sx={{ mt: "4vh", width: "101.6%" }} />
+            <Grid item xs={16} md={8} lg={12} sx={{ marginLeft: "12vw" }}>
+              <form noValidate style={{ marginTop: 18 }}>
+                {gridList.map((grid, index) => (
+                  <div key={index}>
+                    <div style={{
+                      position: "fixed",
+                      display: "flex",
+                      width: "12px",
+                      height: "12px",
+                      left: "45px",
+                      top: "378px",
+                      borderRadius: "50%",
+                      background: "#5030E5",
+                    }}/>
+                    <div style={{
+                      content: "''",
+                      position: "fixed",
+                      left: "50px",
+                      top: "390px",
+                      bottom: bottomPosition,
+                      width: "2px",
+                      backgroundColor: "black"
+                    }} />
+                    {grid}
+                  </div>
+                ))}
+              </form>
+            </Grid>
+            <Divider sx={{ mt: "4vh", width: "101.6%" }} />
+            <Button sx={{
+              textTransform: "capitalize",
+              background: "#0048D9", borderRadius: "6px",
+              fontFamily: "IBM Plex Sans, sans-serif",
+              fontStyle: "normal",
+              fontWeight: 500,
+              fontSize: "1em",
+              color: "#FFFFFF",
+              width: "6vw",
+              mt: "2vh",
+              ml: "2vw",
+              p: ['4px 16px 4px 16px'],
+            }}>Submit</Button>
+          </Grid>
+        </Container>
+      </Box>
+    </Box>
   );
 }

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Sidebar from '../Sidebar'
+import EstimatorSidebar from '../EstimatorSidebar'
 import Box from "@mui/material/Box";
 import {
   Card,
@@ -122,36 +122,12 @@ export default function Dashboard() {
     </Box>
   );
 
-  const card = (
-    <React.Fragment>
-      <CardContent>
-        <Typography sx={{fontSize: 14}} color="text.secondary" gutterBottom>
-          Word of the Day
-        </Typography>
-        <Typography variant="h5" component="div">
-          be{bull}nev{bull}o{bull}lent
-        </Typography>
-        <Typography sx={{mb: 1.5}} color="text.secondary">
-          adjective
-        </Typography>
-        <Typography variant="body2">
-          well meaning and kindly.
-          <br/>
-          {'"a benevolent smile"'}
-        </Typography>
-      </CardContent>
-      <CardActions>
-        <Button size="small">Learn More</Button>
-      </CardActions>
-    </React.Fragment>
-  );
-
   return (
     <ThemeProvider theme={mdTheme}>
       <Box sx={{display: "flex"}}>
         <CssBaseline/>
         <Navbar>John Carmack</Navbar>
-        <Sidebar/>
+        <EstimatorSidebar/>
         <Box
           component="main"
           sx={{
@@ -168,117 +144,117 @@ export default function Dashboard() {
             {/* {error && <Alert variant="danger">{error}</Alert>} */}
             <Grid container spacing={3}>
               <Typography sx={{paddingLeft: 3, paddingTop: 3}} component="h1"
-                          variant="h6" color="inherit">Grocery
+                          variant="h4" color="inherit">Grocery
                 Store</Typography>
               <Grid item xs={12} md={8} lg={12}>
-                <ButtonGroup variant="outlined" ref={anchorRef}
-                             sx={{marginRight: 1}} aria-label="split button">
-                  <Button
-                    onClick={handleClick}>{filterOptions[selectedIndex]}</Button>
-                  <Button
-                    size="small"
-                    aria-controls={open ? 'split-button-menu' : undefined}
-                    aria-expanded={open ? 'true' : undefined}
-                    aria-label="select merge strategy"
-                    aria-haspopup="menu"
-                    onClick={handleToggle}
-                  >
-                    <ArrowDropDownIcon/>
-                  </Button>
-                </ButtonGroup>
-                <Popper
-                  sx={{
-                    zIndex: 1,
-                  }}
-                  open={open}
-                  anchorEl={anchorRef.current}
-                  role={undefined}
-                  transition
-                  disablePortal
-                >
-                  {({TransitionProps, placement}) => (
-                    <Grow
-                      {...TransitionProps}
-                      style={{
-                        transformOrigin:
-                          placement === 'bottom' ? 'center top' :
-                            'center bottom',
-                      }}
-                    >
-                      <Paper>
-                        <ClickAwayListener onClickAway={handleClose}>
-                          <MenuList id="split-button-menu" autoFocusItem>
-                            {filterOptions.map((option, index) => (
-                              <MenuItem
-                                key={option}
-                                disabled={index === 2}
-                                selected={index === selectedIndex}
-                                onClick={(event) => handleMenuItemClick(event,
-                                  index)}
-                              >
-                                {option}
-                              </MenuItem>
-                            ))}
-                          </MenuList>
-                        </ClickAwayListener>
-                      </Paper>
-                    </Grow>
-                  )}
-                </Popper>
-                <ButtonGroup variant="outlined" ref={anchorRef}
-                             aria-label="split button">
-                  <Button
-                    onClick={handleClick}>{date_options[selectedIndex]}</Button>
-                  <Button
-                    size="small"
-                    aria-controls={open ? 'split-button-menu' : undefined}
-                    aria-expanded={open ? 'true' : undefined}
-                    aria-label="select merge strategy"
-                    aria-haspopup="menu"
-                    onClick={handleToggle}
-                  >
-                    <ArrowDropDownIcon/>
-                  </Button>
-                </ButtonGroup>
-                <Popper sx={{
-                  zIndex: 1,
-                }} open={open} anchorEl={anchorRef.current} role={undefined}
-                        transition disablePortal>
-                  {({TransitionProps, placement}) => (
-                    <Grow
-                      {...TransitionProps}
-                      style={{
-                        transformOrigin:
-                          placement === 'bottom' ? 'center top' :
-                            'center bottom',
-                      }}
-                    >
-                      <Paper>
-                        <ClickAwayListener onClickAway={handleClose}>
-                          <MenuList id="split-button-menu" autoFocusItem>
-                            {date_options.map((option, index) => (
-                              <MenuItem
-                                key={option}
-                                disabled={index === 2}
-                                selected={index === selectedIndex}
-                                onClick={(event) => handleMenuItemClick(event,
-                                  index)}
-                              >
-                                {option}
-                              </MenuItem>
-                            ))}
-                          </MenuList>
-                        </ClickAwayListener>
-                      </Paper>
-                    </Grow>
-                  )}
-                </Popper>
+                {/*<ButtonGroup variant="outlined" ref={anchorRef}*/}
+                {/*             sx={{marginRight: 1}} aria-label="split button">*/}
+                {/*  <Button*/}
+                {/*    onClick={handleClick}>{filterOptions[selectedIndex]}</Button>*/}
+                {/*  <Button*/}
+                {/*    size="small"*/}
+                {/*    aria-controls={open ? 'split-button-menu' : undefined}*/}
+                {/*    aria-expanded={open ? 'true' : undefined}*/}
+                {/*    aria-label="select merge strategy"*/}
+                {/*    aria-haspopup="menu"*/}
+                {/*    onClick={handleToggle}*/}
+                {/*  >*/}
+                {/*    <ArrowDropDownIcon/>*/}
+                {/*  </Button>*/}
+                {/*</ButtonGroup>*/}
+                {/*<Popper*/}
+                {/*  sx={{*/}
+                {/*    zIndex: 1,*/}
+                {/*  }}*/}
+                {/*  open={open}*/}
+                {/*  anchorEl={anchorRef.current}*/}
+                {/*  role={undefined}*/}
+                {/*  transition*/}
+                {/*  disablePortal*/}
+                {/*>*/}
+                {/*  {({TransitionProps, placement}) => (*/}
+                {/*    <Grow*/}
+                {/*      {...TransitionProps}*/}
+                {/*      style={{*/}
+                {/*        transformOrigin:*/}
+                {/*          placement === 'bottom' ? 'center top' :*/}
+                {/*            'center bottom',*/}
+                {/*      }}*/}
+                {/*    >*/}
+                {/*      <Paper>*/}
+                {/*        <ClickAwayListener onClickAway={handleClose}>*/}
+                {/*          <MenuList id="split-button-menu" autoFocusItem>*/}
+                {/*            {filterOptions.map((option, index) => (*/}
+                {/*              <MenuItem*/}
+                {/*                key={option}*/}
+                {/*                disabled={index === 2}*/}
+                {/*                selected={index === selectedIndex}*/}
+                {/*                onClick={(event) => handleMenuItemClick(event,*/}
+                {/*                  index)}*/}
+                {/*              >*/}
+                {/*                {option}*/}
+                {/*              </MenuItem>*/}
+                {/*            ))}*/}
+                {/*          </MenuList>*/}
+                {/*        </ClickAwayListener>*/}
+                {/*      </Paper>*/}
+                {/*    </Grow>*/}
+                {/*  )}*/}
+                {/*</Popper>*/}
+                {/*<ButtonGroup variant="outlined" ref={anchorRef}*/}
+                {/*             aria-label="split button">*/}
+                {/*  <Button*/}
+                {/*    onClick={handleClick}>{date_options[selectedIndex]}</Button>*/}
+                {/*  <Button*/}
+                {/*    size="small"*/}
+                {/*    aria-controls={open ? 'split-button-menu' : undefined}*/}
+                {/*    aria-expanded={open ? 'true' : undefined}*/}
+                {/*    aria-label="select merge strategy"*/}
+                {/*    aria-haspopup="menu"*/}
+                {/*    onClick={handleToggle}*/}
+                {/*  >*/}
+                {/*    <ArrowDropDownIcon/>*/}
+                {/*  </Button>*/}
+                {/*</ButtonGroup>*/}
+                {/*<Popper sx={{*/}
+                {/*  zIndex: 1,*/}
+                {/*}} open={open} anchorEl={anchorRef.current} role={undefined}*/}
+                {/*        transition disablePortal>*/}
+                {/*  {({TransitionProps, placement}) => (*/}
+                {/*    <Grow*/}
+                {/*      {...TransitionProps}*/}
+                {/*      style={{*/}
+                {/*        transformOrigin:*/}
+                {/*          placement === 'bottom' ? 'center top' :*/}
+                {/*            'center bottom',*/}
+                {/*      }}*/}
+                {/*    >*/}
+                {/*      <Paper>*/}
+                {/*        <ClickAwayListener onClickAway={handleClose}>*/}
+                {/*          <MenuList id="split-button-menu" autoFocusItem>*/}
+                {/*            {date_options.map((option, index) => (*/}
+                {/*              <MenuItem*/}
+                {/*                key={option}*/}
+                {/*                disabled={index === 2}*/}
+                {/*                selected={index === selectedIndex}*/}
+                {/*                onClick={(event) => handleMenuItemClick(event,*/}
+                {/*                  index)}*/}
+                {/*              >*/}
+                {/*                {option}*/}
+                {/*              </MenuItem>*/}
+                {/*            ))}*/}
+                {/*          </MenuList>*/}
+                {/*        </ClickAwayListener>*/}
+                {/*      </Paper>*/}
+                {/*    </Grow>*/}
+                {/*  )}*/}
+                {/*</Popper>*/}
 
-                <Button variant="text" sx={{float: "right"}}>View 2</Button>
-                <Button variant="text" sx={{float: "right", marginLeft: 1}}>View
-                  1</Button>
-                <Divider orientation="vertical"
-                         sx={{display: "inline", float: "right"}}/>
+                {/*<Button variant="text" sx={{float: "right"}}>View 2</Button>*/}
+                {/*<Button variant="text" sx={{float: "right", marginLeft: 1}}>View*/}
+                {/*  1</Button>*/}
+                {/*<Divider orientation="vertical"*/}
+                {/*         sx={{display: "inline", float: "right"}}/>*/}
                 <Button variant="outlined"
                         sx={{float: "right", marginRight: 2}}>Share</Button>
                 {/*<ButtonGroup variant="outlined" ref={anchorRef} sx={{float: "right", marginRight: 2}} aria-label="split button">*/}

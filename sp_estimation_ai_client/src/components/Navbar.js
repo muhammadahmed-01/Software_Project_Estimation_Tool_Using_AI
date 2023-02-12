@@ -5,7 +5,7 @@ import MuiAppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import {styled} from "@mui/material/styles";
-import {Avatar, InputBase, InputLabel, Paper, Select} from "@mui/material";
+import { Avatar, Box, Drawer, InputBase, InputLabel, Paper, Select } from "@mui/material";
 // import { useSelector, useDispatch } from 'react-redux';
 // import { actionCreators } from "../state";
 // import { bindActionCreators } from "redux";
@@ -14,8 +14,11 @@ import Divider from '@mui/material/Divider';
 import SearchIcon from '@mui/icons-material/Search';
 import DirectionsIcon from '@mui/icons-material/Directions';
 import MenuItem from "@mui/material/MenuItem";
+import logo from "../logo.svg";
+import PropTypes from "prop-types";
+import ReviewedTasks from "./ReviewedTasks";
 
-const drawerWidth = 250;
+const drawerWidth = "240";
 
 const AppBar = styled(MuiAppBar, {
   shouldForwardProp: (prop) => prop !== "open",
@@ -35,7 +38,7 @@ const AppBar = styled(MuiAppBar, {
   }),
 }));
 
-export default function Navbar(props) {
+export default function Navbar({ username }) {
   // const open = useSelector(state => state.state)
   // const dispatch = useDispatch();
   // const { toggleDrawer } = bindActionCreators(actionCreators, dispatch);
@@ -46,7 +49,21 @@ export default function Navbar(props) {
   };
 
   return (
-  <AppBar position="absolute" open={open}>
+  <AppBar position="absolute" open={open} sx={{height: "auto",
+    backgroundColor: "#FFFFFF", border: "1px solid #DBDBDB", boxShadow: "none"}}>
+    <Drawer variant="permanent" open={true} PaperProps={{
+      style: { height: "auto", width: "16.183vw" } }}>
+      <Box >
+        <img alt={""} src={logo} style={{marginLeft: "1vw", marginTop: "2vh"}} width={24} height={24}/>
+        <Typography sx={{display: "inline", color: "#0D062D", marginLeft: "1vw", top: "-1vh", position: "relative",
+          fontFamily: "Inter, sans-serif", fontStyle: "normal", fontWeight: "600", fontSize: "1.25em",
+          lineHeight: "1.5em"}}>DASHBOARD</Typography>
+      </Box>
+      <Typography sx={{marginBottom: "2.8vh", fontFamily: 'Inter, sans-serif',
+        fontStyle: "normal", fontWeight: 500, fontSize: "1em",
+        lineHeight: "1.1875em", color: "#492AB7", marginLeft: "3.7vw"}}>Estimator</Typography>
+      <Divider />
+    </Drawer>
     <Toolbar
       sx={{
         pr: "24px", // keep right padding when drawer closed
@@ -66,20 +83,26 @@ export default function Navbar(props) {
       </IconButton>
       <Paper
         component="form"
-        sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: 400 }}
+        sx={{ p: '2px 4px', ml: "4vw", mt: "2.5vh", mb: "2.5vh", display: 'flex', alignItems: 'center', width: 400,
+          backgroundColor: "#F5F5F5", borderRadius: "6px", boxShadow: "none" }}
       >
         <IconButton type="button" sx={{ p: '10px' }} aria-label="search">
           <SearchIcon />
         </IconButton>
         <InputBase
-          sx={{ ml: 1, flex: 1 }}
+          sx={{ ml: 1, flex: 1, color: "#787486",
+            fontFamily: 'Inter, sans-serif',
+            fontStyle: "normal",
+            fontWeight: 400,
+            fontSize: "14px",
+            lineHeight: "17px", }}
           placeholder="Search for anything..."
-          inputProps={{ 'aria-label': 'search google maps' }}
+          inputProps={{ 'aria-label': 'search for anything' }}
         />
       </Paper>
       <Typography component="h1" variant="h6" color="inherit" align="right" noWrap sx={{flexGrow: 1}}>
         {/* eslint-disable-next-line react/prop-types */}
-        {props.children}
+        {username}
       </Typography>
       <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
       <InputLabel id="simple-select-label"></InputLabel>
@@ -97,3 +120,7 @@ export default function Navbar(props) {
     </Toolbar>
   </AppBar>
 )};
+
+Navbar.propTypes = {
+  username: PropTypes.string.isRequired,
+};

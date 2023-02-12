@@ -95,12 +95,6 @@ export default function PendingTasks(){
             <TableCell>3</TableCell>
             <TableCell align="right">4h</TableCell>
           </TableRow>
-          <TableRow>
-            <TableCell>Task 1</TableCell>
-            <TableCell>2</TableCell>
-            <TableCell>3</TableCell>
-            <TableCell align="right">4h</TableCell>
-          </TableRow>
           {/*))}*/}
         </TableBody>
       </Table>
