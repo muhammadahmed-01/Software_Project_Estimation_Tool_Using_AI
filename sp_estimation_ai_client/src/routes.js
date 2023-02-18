@@ -6,7 +6,6 @@ import EstimateForm from "./components/EstimateForm"
 import PendingTasks from "./components/PendingTasks";
 import RequirementsDocument from "./components/RequirementsDocument"
 import EmailXLSX from "./components/EmailXLSX";
-import NestedLines from "./components/NestedLines";
 
 const routes = [
   {
@@ -64,13 +63,6 @@ const routes = [
     key: "pending-tasks",
     route: "/pending-tasks",
     component: <PendingTasks/>
-  },
-  {
-    type: "route",
-    name: "Nested Lines",
-    key: "nested-lines",
-    route: "/nested-lines",
-    component: <NestedLines/>
   },
 ];
 

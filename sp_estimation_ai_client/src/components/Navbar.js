@@ -100,7 +100,7 @@ export default function Navbar({ username }) {
           inputProps={{ 'aria-label': 'search for anything' }}
         />
       </Paper>
-      <Typography component="h1" variant="h6" color="inherit" align="right" noWrap sx={{flexGrow: 1}}>
+      <Typography component="h1" variant="h6" color="inherit" align="right" noWrap sx={{flexGrow: 1, color: "black", mr: "1vw"}}>
         {/* eslint-disable-next-line react/prop-types */}
         {username}
       </Typography>

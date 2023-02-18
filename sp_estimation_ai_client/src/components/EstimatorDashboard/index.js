@@ -51,9 +51,6 @@ export default function Dashboard() {
   }
   // console.log("status = ", status)
 
-  const handleClick = () => {
-    console.info(`You clicked ${filterOptions[selectedIndex]}`);
-  };
 
   const handleMenuItemClick = (event, index) => {
     setSelectedIndex(index);
@@ -126,7 +123,7 @@ export default function Dashboard() {
     <ThemeProvider theme={mdTheme}>
       <Box sx={{display: "flex"}}>
         <CssBaseline/>
-        <Navbar>John Carmack</Navbar>
+        <Navbar username={"John Carmack"}/>
         <EstimatorSidebar/>
         <Box
           component="main"
@@ -147,124 +144,8 @@ export default function Dashboard() {
                           variant="h4" color="inherit">Grocery
                 Store</Typography>
               <Grid item xs={12} md={8} lg={12}>
-                {/*<ButtonGroup variant="outlined" ref={anchorRef}*/}
-                {/*             sx={{marginRight: 1}} aria-label="split button">*/}
-                {/*  <Button*/}
-                {/*    onClick={handleClick}>{filterOptions[selectedIndex]}</Button>*/}
-                {/*  <Button*/}
-                {/*    size="small"*/}
-                {/*    aria-controls={open ? 'split-button-menu' : undefined}*/}
-                {/*    aria-expanded={open ? 'true' : undefined}*/}
-                {/*    aria-label="select merge strategy"*/}
-                {/*    aria-haspopup="menu"*/}
-                {/*    onClick={handleToggle}*/}
-                {/*  >*/}
-                {/*    <ArrowDropDownIcon/>*/}
-                {/*  </Button>*/}
-                {/*</ButtonGroup>*/}
-                {/*<Popper*/}
-                {/*  sx={{*/}
-                {/*    zIndex: 1,*/}
-                {/*  }}*/}
-                {/*  open={open}*/}
-                {/*  anchorEl={anchorRef.current}*/}
-                {/*  role={undefined}*/}
-                {/*  transition*/}
-                {/*  disablePortal*/}
-                {/*>*/}
-                {/*  {({TransitionProps, placement}) => (*/}
-                {/*    <Grow*/}
-                {/*      {...TransitionProps}*/}
-                {/*      style={{*/}
-                {/*        transformOrigin:*/}
-                {/*          placement === 'bottom' ? 'center top' :*/}
-                {/*            'center bottom',*/}
-                {/*      }}*/}
-                {/*    >*/}
-                {/*      <Paper>*/}
-                {/*        <ClickAwayListener onClickAway={handleClose}>*/}
-                {/*          <MenuList id="split-button-menu" autoFocusItem>*/}
-                {/*            {filterOptions.map((option, index) => (*/}
-                {/*              <MenuItem*/}
-                {/*                key={option}*/}
-                {/*                disabled={index === 2}*/}
-                {/*                selected={index === selectedIndex}*/}
-                {/*                onClick={(event) => handleMenuItemClick(event,*/}
-                {/*                  index)}*/}
-                {/*              >*/}
-                {/*                {option}*/}
-                {/*              </MenuItem>*/}
-                {/*            ))}*/}
-                {/*          </MenuList>*/}
-                {/*        </ClickAwayListener>*/}
-                {/*      </Paper>*/}
-                {/*    </Grow>*/}
-                {/*  )}*/}
-                {/*</Popper>*/}
-                {/*<ButtonGroup variant="outlined" ref={anchorRef}*/}
-                {/*             aria-label="split button">*/}
-                {/*  <Button*/}
-                {/*    onClick={handleClick}>{date_options[selectedIndex]}</Button>*/}
-                {/*  <Button*/}
-                {/*    size="small"*/}
-                {/*    aria-controls={open ? 'split-button-menu' : undefined}*/}
-                {/*    aria-expanded={open ? 'true' : undefined}*/}
-                {/*    aria-label="select merge strategy"*/}
-                {/*    aria-haspopup="menu"*/}
-                {/*    onClick={handleToggle}*/}
-                {/*  >*/}
-                {/*    <ArrowDropDownIcon/>*/}
-                {/*  </Button>*/}
-                {/*</ButtonGroup>*/}
-                {/*<Popper sx={{*/}
-                {/*  zIndex: 1,*/}
-                {/*}} open={open} anchorEl={anchorRef.current} role={undefined}*/}
-                {/*        transition disablePortal>*/}
-                {/*  {({TransitionProps, placement}) => (*/}
-                {/*    <Grow*/}
-                {/*      {...TransitionProps}*/}
-                {/*      style={{*/}
-                {/*        transformOrigin:*/}
-                {/*          placement === 'bottom' ? 'center top' :*/}
-                {/*            'center bottom',*/}
-                {/*      }}*/}
-                {/*    >*/}
-                {/*      <Paper>*/}
-                {/*        <ClickAwayListener onClickAway={handleClose}>*/}
-                {/*          <MenuList id="split-button-menu" autoFocusItem>*/}
-                {/*            {date_options.map((option, index) => (*/}
-                {/*              <MenuItem*/}
-                {/*                key={option}*/}
-                {/*                disabled={index === 2}*/}
-                {/*                selected={index === selectedIndex}*/}
-                {/*                onClick={(event) => handleMenuItemClick(event,*/}
-                {/*                  index)}*/}
-                {/*              >*/}
-                {/*                {option}*/}
-                {/*              </MenuItem>*/}
-                {/*            ))}*/}
-                {/*          </MenuList>*/}
-                {/*        </ClickAwayListener>*/}
-                {/*      </Paper>*/}
-                {/*    </Grow>*/}
-                {/*  )}*/}
-                {/*</Popper>*/}
-
-                {/*<Button variant="text" sx={{float: "right"}}>View 2</Button>*/}
-                {/*<Button variant="text" sx={{float: "right", marginLeft: 1}}>View*/}
-                {/*  1</Button>*/}
-                {/*<Divider orientation="vertical"*/}
-                {/*         sx={{display: "inline", float: "right"}}/>*/}
                 <Button variant="outlined"
                         sx={{float: "right", marginRight: 2}}>Share</Button>
-                {/*<ButtonGroup variant="outlined" ref={anchorRef} sx={{float: "right", marginRight: 2}} aria-label="split button">*/}
-                {/*  <Button onClick={handleClick}>{shareOptions[selectedIndex]}</Button>*/}
-                {/*  <Button size="small" aria-controls={open ? 'split-button-menu' : undefined}*/}
-                {/*          aria-expanded={open ? 'true' : undefined} aria-label="select merge strategy"*/}
-                {/*          aria-haspopup="menu" onClick={handleToggle}>*/}
-                {/*    <ArrowDropDownIcon />*/}
-                {/*  </Button>*/}
-                {/*</ButtonGroup>*/}
                 <Button variant="outlined" sx={{float: "right", marginRight: 2}}
                         onClick={newEstimate}>New Estimate</Button>
                 <Popper sx={{
@@ -303,31 +184,7 @@ export default function Dashboard() {
               </Grid>
               <Paper sx={{marginTop: "5%", width: 1}}>
                 {component}
-
               </Paper>
-              {/* Chart */}
-              {/*<Grid item xs={12} md={8} lg={12}>*/}
-              {/*  <Box sx={{p: 2, display: "flex", justifyContent: "space-between"}}>*/}
-              {/*    <Paper sx={{p: 2, display: "flex", flexDirection: "column", width: 1/3.1, maxWidth: 1}}>*/}
-              {/*      <Typography component="h1" variant="h6">{todo_bull} To Do</Typography>*/}
-              {/*      <Divider sx={{marginTop: 1, marginBottom: 3, border: "4px solid rgb(138,43,226)"}}/>*/}
-              {/*      <Card variant="outlined">{card}</Card>*/}
-              {/*      <Card variant="outlined">{card}</Card>*/}
-              {/*    </Paper>*/}
-              {/*    <Paper sx={{p: 2, display: "flex", flexDirection: "column", width: 1/3.1, maxWidth: 1}}>*/}
-              {/*      <Typography component="h1" variant="h6">{inprogress_bull} In Progress</Typography>*/}
-              {/*      <Divider sx={{marginTop: 1, marginBottom: 3, border: "4px solid rgb(250,170,2)"}}/>*/}
-              {/*      <Card variant="outlined">{card}</Card>*/}
-              {/*      <Card variant="outlined">{card}</Card>*/}
-              {/*    </Paper>*/}
-              {/*    <Paper sx={{p: 2, display: "flex", flexDirection: "column", width: 1/3.1, maxWidth: 1}}>*/}
-              {/*      <Typography component="h1" variant="h6">{done_bull} Done</Typography>*/}
-              {/*      <Divider sx={{marginTop: 1, marginBottom: 3, border: "4px solid rgb(151,250,2)"}}/>*/}
-              {/*      <Card variant="outlined">{card}</Card>*/}
-              {/*      <Card variant="outlined">{card}</Card>*/}
-              {/*    </Paper>*/}
-              {/*  </Box>*/}
-              {/*</Grid>*/}
             </Grid>
           </Container>
         </Box>
