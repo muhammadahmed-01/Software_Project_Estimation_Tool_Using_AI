@@ -1,9 +1,9 @@
 import LandingPage from "./components/LandingPage";
 import EstimatorDashboard from "./components/EstimatorDashboard"
+import EstimationReviewerDashboard from "./components/EstimationReviewerDashboard"
 import SalespersonDashboard from "./components/SalespersonDashboard"
 import Login from "./components/Login/Login"
 import EstimateForm from "./components/EstimateForm"
-import PendingTasks from "./components/PendingTasks";
 import RequirementsDocument from "./components/RequirementsDocument"
 import EmailXLSX from "./components/EmailXLSX";
 
@@ -21,6 +21,13 @@ const routes = [
     key: "estimator dashboard",
     route: "/estimator-dashboard",
     component: <EstimatorDashboard />,
+  },
+  {
+    type: "route",
+    name: "Estimation Reviewer Dashboard",
+    key: "estimator reviewer dashboard",
+    route: "/estimation-reviewer-dashboard",
+    component: <EstimationReviewerDashboard />,
   },
   {
     type: "route",
@@ -56,13 +63,6 @@ const routes = [
     key: "estimation-form",
     route: "/new-estimate",
     component: <EstimateForm />,
-  },
-  {
-    type: "route",
-    name: "Pending Tasks",
-    key: "pending-tasks",
-    route: "/pending-tasks",
-    component: <PendingTasks/>
   },
 ];
 

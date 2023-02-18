@@ -16,7 +16,7 @@ import DirectionsIcon from '@mui/icons-material/Directions';
 import MenuItem from "@mui/material/MenuItem";
 import logo from "../logo.svg";
 import PropTypes from "prop-types";
-import ReviewedTasks from "./ReviewedTasks";
+import EstimatorReviewedTasks from "./EstimatorReviewedTasks";
 
 const drawerWidth = "240";
 
@@ -38,7 +38,7 @@ const AppBar = styled(MuiAppBar, {
   }),
 }));
 
-export default function Navbar({ username }) {
+export default function Navbar({ username, role }) {
   // const open = useSelector(state => state.state)
   // const dispatch = useDispatch();
   // const { toggleDrawer } = bindActionCreators(actionCreators, dispatch);
@@ -61,7 +61,7 @@ export default function Navbar({ username }) {
       </Box>
       <Typography sx={{marginBottom: "2.8vh", fontFamily: 'Inter, sans-serif',
         fontStyle: "normal", fontWeight: 500, fontSize: "1em",
-        lineHeight: "1.1875em", color: "#492AB7", marginLeft: "3.7vw"}}>Estimator</Typography>
+        lineHeight: "1.1875em", color: "#492AB7", marginLeft: "3.7vw"}}>{role}</Typography>
       <Divider />
     </Drawer>
     <Toolbar
@@ -123,4 +123,5 @@ export default function Navbar({ username }) {
 
 Navbar.propTypes = {
   username: PropTypes.string.isRequired,
+  role: PropTypes.string.isRequired,
 };

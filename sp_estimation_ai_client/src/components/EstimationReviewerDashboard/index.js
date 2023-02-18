@@ -1,5 +1,5 @@
 import * as React from 'react';
-import EstimatorSidebar from '../Sidebar/EstimatorSidebar'
+import EstimationReviewerSidebar from '../Sidebar/EstimationReviewerSidebar'
 import Box from "@mui/material/Box";
 import {
   Container,
@@ -18,7 +18,7 @@ import Popper from '@mui/material/Popper';
 import MenuItem from '@mui/material/MenuItem';
 import MenuList from '@mui/material/MenuList';
 import {useNavigate, useLocation} from 'react-router-dom'
-import EstimatorReviewedTasks from "../EstimatorReviewedTasks";
+import EstimationReviewerTasks from "../EstimationReviewerTasks";
 
 const mdTheme = createTheme();
 
@@ -34,11 +34,16 @@ export default function Dashboard() {
   const status = searchParams.get("status");
   let component;
   if (status === "rejected") {
-    component = <EstimatorReviewedTasks status="Rejected" hideComment={false}/>;
+    component = <EstimationReviewerTasks status="rejected"/>;
   } else if (status === "pending") {
-    component = <EstimatorReviewedTasks status="Pending" hideComment={true} />;
-  } else {
-    component = <EstimatorReviewedTasks status="Approved" hideComment={false}/>;
+    component = <EstimationReviewerTasks status="pending" />;
+  } else if (status === "approved") {
+    component = <EstimationReviewerTasks status="approved" />;
+  } else if (status === "unassigned") {
+    component = <EstimationReviewerTasks status="unassigned" />;
+  }
+  else {
+    component = <EstimationReviewerTasks status="assigned"/>;
   }
 
   const handleMenuItemClick = (event, index) => {
@@ -62,8 +67,8 @@ export default function Dashboard() {
     <ThemeProvider theme={mdTheme}>
       <Box sx={{display: "flex"}}>
         <CssBaseline/>
-        <Navbar username={"John Carmack"} role={"Estimator"}/>
-        <EstimatorSidebar/>
+        <Navbar username={"John Carmack"} role={"Estimation Reviewer"}/>
+        <EstimationReviewerSidebar/>
         <Box
           component="main"
           sx={{

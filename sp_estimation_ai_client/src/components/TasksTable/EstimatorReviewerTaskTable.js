@@ -1,7 +1,7 @@
 /* eslint react/prop-types: 0 */
-import { Table, TableCell, TableHead, TableRow } from "@mui/material";
+import { Table, TableCell, TableHead, TableBody, TableRow } from "@mui/material";
 import * as React from "react";
-import TaskTableRow from "./TaskTableRow"
+import EstimationReviewerTaskTableRow from "./EstimationReviewerTaskTableRow"
 
 const TasksTable = ({ data }) => {
   return (
@@ -11,15 +11,17 @@ const TasksTable = ({ data }) => {
           <TableCell>Task Name</TableCell>
           <TableCell>Skill</TableCell>
           <TableCell>Complexity</TableCell>
-          <TableCell>Comments</TableCell>
+          <TableCell>Assignee</TableCell>
+          <TableCell>Status</TableCell>
           <TableCell align="right">Estimated Time</TableCell>
+          <TableCell align="right">Actions</TableCell>
         </TableRow>
       </TableHead>
-      <tbody>
+      <TableBody>
       {data.map((rowData) => (
-        <TaskTableRow key={rowData.id} data={rowData} />
+        <EstimationReviewerTaskTableRow key={rowData.id} data={rowData} />
       ))}
-      </tbody>
+      </TableBody>
     </Table>
   );
 };
