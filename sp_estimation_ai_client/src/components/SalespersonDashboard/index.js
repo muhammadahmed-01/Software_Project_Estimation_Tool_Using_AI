@@ -1,5 +1,5 @@
 import * as React from 'react';
-import EstimatorSidebar from '../EstimatorSidebar'
+import EstimatorSidebar from '../Sidebar/EstimatorSidebar'
 import Box from "@mui/material/Box";
 import {
   Card,

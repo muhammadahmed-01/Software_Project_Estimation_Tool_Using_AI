@@ -9,11 +9,13 @@ import DashboardIcon from "@mui/icons-material/Dashboard";
 import AssignmentTurnedInIcon from "@mui/icons-material/AssignmentTurnedIn";
 import PersonIcon from "@mui/icons-material/Person";
 import BoltIcon from "@mui/icons-material/Bolt";
+import "./sidebar.css"
 
 export default function EstimatorSidebar() {
   return (
-    <List sx={{ width: "16.183vw", position: "relative" }} component="nav">
-      <Link sx={{marginTop: "20vh"}} to="/estimator-dashboard">
+    <List style={{ width: "16.183vw", position: "relative", marginTop: "11vh"}}
+          component="nav">
+      <Link style={{marginTop: "20vh"}} to="/estimator-dashboard">
         <ListItemButton>
           <ListItemIcon>
             <DashboardIcon />
@@ -47,7 +49,7 @@ export default function EstimatorSidebar() {
       </Link>
       <Divider sx={{ my: 1 }} />
       <Typography sx={{ marginLeft: "5%" }} variant={"body2"}>MY PROJECTS</Typography>
-      <Link to="/doctors-list">
+      <Link to="">
         <ListItemButton>
           <ListItemIcon>
             {/*<AssignmentTurnedInIcon/>*/}
@@ -55,7 +57,7 @@ export default function EstimatorSidebar() {
           <ListItemText primary="Rejected" />
         </ListItemButton>
       </Link>
-      <Link to="/my-appointments">
+      <Link to="">
         <ListItemButton>
           <ListItemIcon>
             {/*<PersonIcon/>*/}
