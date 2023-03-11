@@ -32,18 +32,21 @@ export default function Dashboard() {
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const status = searchParams.get("status");
+  const estimator = 1;
+  const projectID = 1;
+  const projectName = null;
   let component;
   if (status === "rejected") {
-    component = <EstimationReviewerTasks status="rejected"/>;
+    component = <EstimationReviewerTasks status="rejected" project={projectID} estimator={estimator}/>;
   } else if (status === "pending") {
-    component = <EstimationReviewerTasks status="pending" />;
+    component = <EstimationReviewerTasks status="pending" project={projectID} estimator={estimator}/>;
   } else if (status === "approved") {
-    component = <EstimationReviewerTasks status="approved" />;
+    component = <EstimationReviewerTasks status="approved" project={projectID} estimator={estimator}/>;
   } else if (status === "unassigned") {
-    component = <EstimationReviewerTasks status="unassigned" />;
+    component = <EstimationReviewerTasks status="unassigned" project={projectID} estimator={estimator}/>;
   }
   else {
-    component = <EstimationReviewerTasks status="assigned"/>;
+    component = <EstimationReviewerTasks status="assigned" project={projectID} estimator={estimator}/>;
   }
 
   const handleMenuItemClick = (event, index) => {

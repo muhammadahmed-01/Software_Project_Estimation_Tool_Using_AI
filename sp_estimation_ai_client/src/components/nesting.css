@@ -1,0 +1,48 @@
+.task, .subtask {
+    position: relative;
+}
+
+/*.task::before,*/
+/*.subtask::before {*/
+/*    content: "";*/
+/*    position: absolute;*/
+/*    top: 0;*/
+/*    left: calc(-12vw - #{$depth * 10}vw);*/
+/*    height: 100%;*/
+/*    border-left: 2px solid purple;*/
+/*}*/
+
+.task::before {
+    border-left-color: purple;
+}
+
+.subtask::before {
+    border-left-color: purple;
+}
+
+.task::before .circle,
+.subtask::before .circle {
+    content: "";
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    border-radius: 50%;
+    background-color: purple;
+}
+
+.subtask::before .circle {
+    background-color: green;
+}
+
+.subtask::after {
+    content: "";
+    width: 11vw;
+    height: 1px;
+    position: absolute;
+    top: 7vh;
+    left: -12vw;
+    margin-top: -1px;
+    border-top: 1px solid #000;
+}

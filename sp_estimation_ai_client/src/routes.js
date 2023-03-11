@@ -29,13 +29,13 @@ const routes = [
     route: "/estimation-reviewer-dashboard",
     component: <EstimationReviewerDashboard />,
   },
-  {
-    type: "route",
-    name: "Salesperson Dashboard",
-    key: "salesperson dashboard",
-    route: "/salesperson-dashboard",
-    component: <SalespersonDashboard />,
-  },
+  // {
+  //   type: "route",
+  //   name: "Salesperson Dashboard",
+  //   key: "salesperson dashboard",
+  //   route: "/salesperson-dashboard",
+  //   component: <SalespersonDashboard />,
+  // },
   {
     type: "route",
     name: "Requirements Document",

@@ -16,7 +16,7 @@ import DirectionsIcon from '@mui/icons-material/Directions';
 import MenuItem from "@mui/material/MenuItem";
 import logo from "../logo.svg";
 import PropTypes from "prop-types";
-import EstimatorReviewedTasks from "./EstimatorReviewedTasks";
+import EstimatorTasks from "./EstimatorTasks";
 
 const drawerWidth = "240";
 

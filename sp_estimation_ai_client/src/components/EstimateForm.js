@@ -11,6 +11,7 @@ import Navbar from "./Navbar";
 import Toolbar from "@mui/material/Toolbar";
 import { Divider } from "@mui/material";
 import SubTask from "../components/SubTask";
+import "./nesting.css"
 import { css } from "@emotion/react";
 // import { ChatGPTAPI } from 'chatgpt'
 
@@ -30,15 +31,34 @@ export default function EstimateForm() {
   const [bottomPosition, setBottomPosition] = useState("433px");
   const [topPosition, setTopPosition] = useState("500px");
 
+  const onCreateAnotherSubtaskClick = (index, subtasks) => {
+    const newSubtasks = [...subtasks];
+    newSubtasks.splice(index + 1, 0, {
+      subtask_name: "",
+      subtask_skill: "",
+      subtask_complexity: "",
+      subtask_estimated_time: "",
+      subtasks: []
+    });
+    return newSubtasks;
+  };
+
+
   const handleAddGrid = () => {
     const grids = Array.from({ length: gridCount }, (_, index) => (
-      <SubTask index={index} />
+      <SubTask index={index}
+               task_name={task_name}
+               onCreateAnotherSubtaskClick={onCreateAnotherSubtaskClick}
+               subtasks={[]}
+      />
     ));
 
     setGridList(grids);
     setGridCount(gridCount + 1);
     setBottomPosition(parseInt(bottomPosition, 10) - 100 + "px");
+    console.log("New bottomPosition inside handleAddGrid: ", bottomPosition)
     setTopPosition(parseInt(topPosition, 10) + 100 + "px");
+    console.log("New topPosition inside handleAddGrid: ", topPosition)
   };
 
   const Alert = React.forwardRef(function Alert(props, ref) {
@@ -52,7 +72,7 @@ export default function EstimateForm() {
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
-      <Navbar username={"John Carmack"} />
+      <Navbar role={"Estimator"} username={"John Carmack"} />
       <Box
         component="main"
         sx={{
@@ -74,8 +94,9 @@ export default function EstimateForm() {
               fontWeight: 600, fontSize: "46px", lineHeight: "56px",
               textTransform: "capitalize"
             }} component="h1"
-                        variant="h4" color="inherit">Grocery
-              Store</Typography>
+                        variant="h4" color="inherit">
+              Grocery Store
+            </Typography>
             <Grid item xs={2} md={2} lg={2}>
               <TextField
                 required
@@ -83,22 +104,28 @@ export default function EstimateForm() {
                 label="Task name"
                 name="task_name"
                 autoComplete="task_name"
+                value={task_name}
                 onChange={onChangeTaskName}
               />
             </Grid>
             <Grid item xs={2} md={2} lg={2}>
-              <Button variant={"contained"} sx={{
-                backgroundColor: "#0048D9",
-                color: "white"
-              }} onClick={handleAddGrid}>
+              <Button variant={"contained"}
+                      sx={{
+                        backgroundColor: "#0048D9",
+                        color: "white"
+                      }}
+                      onClick={handleAddGrid}
+                      // disabled={task_name.length === 0}
+                >
                 Create subtask
               </Button>
             </Grid>
             <Divider sx={{ mt: "4vh", width: "101.6%" }} />
             <Grid item xs={16} md={8} lg={12} sx={{ marginLeft: "12vw" }}>
-              <form noValidate style={{ marginTop: 18 }}>
+              <form noValidate style={{ }}>
                 {gridList.map((grid, index) => (
                   <div key={index}>
+                    {/*
                     <div style={{
                       position: "fixed",
                       display: "flex",
@@ -107,8 +134,8 @@ export default function EstimateForm() {
                       left: "45px",
                       top: "378px",
                       borderRadius: "50%",
-                      background: "#5030E5",
-                    }}/>
+                      background: "#5030E5"
+                    }} />
                     <div style={{
                       content: "''",
                       position: "fixed",
@@ -118,6 +145,7 @@ export default function EstimateForm() {
                       width: "2px",
                       backgroundColor: "black"
                     }} />
+                    */}
                     {grid}
                   </div>
                 ))}
@@ -135,7 +163,7 @@ export default function EstimateForm() {
               width: "6vw",
               mt: "2vh",
               ml: "2vw",
-              p: ['4px 16px 4px 16px'],
+              p: ["4px 16px 4px 16px"]
             }}>Submit</Button>
           </Grid>
         </Container>
