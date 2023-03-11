@@ -28,8 +28,6 @@ export default function EstimateForm() {
   const [task_name, setTaskName] = useState("");
   const [gridList, setGridList] = useState([]);
   const [gridCount, setGridCount] = useState(1);
-  const [bottomPosition, setBottomPosition] = useState("433px");
-  const [topPosition, setTopPosition] = useState("500px");
 
   const onCreateAnotherSubtaskClick = (index, subtasks) => {
     const newSubtasks = [...subtasks];
@@ -55,10 +53,6 @@ export default function EstimateForm() {
 
     setGridList(grids);
     setGridCount(gridCount + 1);
-    setBottomPosition(parseInt(bottomPosition, 10) - 100 + "px");
-    console.log("New bottomPosition inside handleAddGrid: ", bottomPosition)
-    setTopPosition(parseInt(topPosition, 10) + 100 + "px");
-    console.log("New topPosition inside handleAddGrid: ", topPosition)
   };
 
   const Alert = React.forwardRef(function Alert(props, ref) {
@@ -115,43 +109,22 @@ export default function EstimateForm() {
                         color: "white"
                       }}
                       onClick={handleAddGrid}
-                      // disabled={task_name.length === 0}
+                      disabled={task_name.length === 0}
                 >
                 Create subtask
               </Button>
             </Grid>
-            <Divider sx={{ mt: "4vh", width: "101.6%" }} />
+            <Divider sx={{ mt: "4vh", width: "101%" }} />
             <Grid item xs={16} md={8} lg={12} sx={{ marginLeft: "12vw" }}>
               <form noValidate style={{ }}>
                 {gridList.map((grid, index) => (
                   <div key={index}>
-                    {/*
-                    <div style={{
-                      position: "fixed",
-                      display: "flex",
-                      width: "12px",
-                      height: "12px",
-                      left: "45px",
-                      top: "378px",
-                      borderRadius: "50%",
-                      background: "#5030E5"
-                    }} />
-                    <div style={{
-                      content: "''",
-                      position: "fixed",
-                      left: "50px",
-                      top: "390px",
-                      bottom: bottomPosition,
-                      width: "2px",
-                      backgroundColor: "black"
-                    }} />
-                    */}
                     {grid}
                   </div>
                 ))}
               </form>
             </Grid>
-            <Divider sx={{ mt: "4vh", width: "101.6%" }} />
+            <Divider sx={{ mt: "4vh", width: "101%" }} />
             <Button sx={{
               textTransform: "capitalize",
               background: "#0048D9", borderRadius: "6px",

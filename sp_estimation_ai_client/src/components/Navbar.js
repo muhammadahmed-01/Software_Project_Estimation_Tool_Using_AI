@@ -52,8 +52,12 @@ export default function Navbar({ username, role }) {
   <AppBar position="absolute" open={open} sx={{height: "auto",
     backgroundColor: "#FFFFFF", border: "1px solid #DBDBDB", boxShadow: "none"}}>
     <Drawer variant="permanent" open={true} PaperProps={{
-      style: { height: "auto", width: "16.183vw" } }}>
-      <Box >
+      style: { width: "16.183vw",position: "absolute",
+        left: "-16.2vw",
+        border: "1px solid rgba(0, 0, 0, 0.12)",
+        height: "auto", overflow: "hidden", padding: 0, bottom: 0,
+        top: "-1px", } }}>
+      <Box>
         <img alt={""} src={logo} style={{marginLeft: "1vw", marginTop: "2vh"}} width={24} height={24}/>
         <Typography sx={{display: "inline", color: "#0D062D", marginLeft: "1vw", top: "-1vh", position: "relative",
           fontFamily: "Inter, sans-serif", fontStyle: "normal", fontWeight: "600", fontSize: "1.25em",

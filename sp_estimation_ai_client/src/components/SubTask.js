@@ -10,18 +10,21 @@ import { v4 as uuidv4 } from "uuid"; // import uuidv4
 import "./nesting.css";
 
 export default function SubTask({ index, task_name, onCreateAnotherSubtaskClick, subtasks, depth = 0 }) {
-  const [skill, setSkill] = useState(0);
-  const [complexity, setComplexity] = useState(0);
+  const [skill, setSkill] = useState();
+  const [complexity, setComplexity] = useState();
   const [subtask_name, setSubTaskName] = useState("");
   const [estimate_time, setEstimateTime] = useState("");
   const [color, setColor] = useState("initial");
   const [subtaskList, setSubtaskList] = useState(subtasks);
 
   const highlightIt = (e) => {
+    console.log("Highlight called with depth = ", depth)
+    e.stopPropagation();
     setColor("#D9CEFF");
   };
 
   const unHighlightIt = (e) => {
+    e.stopPropagation();
     setColor("initial");
   };
 
@@ -44,7 +47,7 @@ export default function SubTask({ index, task_name, onCreateAnotherSubtaskClick,
       top: 0;
       left: ${-12 + (depth * 2) + "vw"};
       height: 100%;
-      border-left: 2px solid purple;
+      border-left: 2px solid black;
     }
 
   ,
@@ -116,7 +119,7 @@ export default function SubTask({ index, task_name, onCreateAnotherSubtaskClick,
           onMouseLeave={unHighlightIt}
           sx={{
             backgroundColor: color,
-            marginTop: "1vh",
+            marginTop: "0.1vh",
             paddingBottom: "3vh",
             paddingTop: "2vh",
             marginLeft: 0
@@ -124,15 +127,24 @@ export default function SubTask({ index, task_name, onCreateAnotherSubtaskClick,
           css={myClass2}
           className={"subtask"}
     >
-      {/*{*/}
-      {/*  index > 0 ? (*/}
-      {/*      <div css={myClass} />*/}
-      {/*    ) :*/}
-      {/*    (*/}
-      {/*      <></>*/}
-      {/*    )*/}
-      {/*}*/}
-      <div className="circle"></div>
+      {
+        index < 1 ? (
+            <div className="circle" style={{
+              content: "",
+              width: "10px",
+              height: "10px",
+              position: "absolute",
+              top: "-5px",
+              left: `${-12 + (depth * 2) - 0.25 + "vw"}`,
+              borderRadius: "50%",
+              backgroundColor: "#5030E5",
+            }}></div>
+          ) :
+          (
+            <></>
+          )
+      }
+
       <Grid item xs={2.5}>
         <TextField
           required
@@ -192,7 +204,7 @@ export default function SubTask({ index, task_name, onCreateAnotherSubtaskClick,
           Generate Estimate
         </Button>
       </Grid>
-      <Grid item xs={1.9}>
+      <Grid item xs={2.1}>
         <Button variant="contained"
                 sx={{
                   textTransform: "capitalize",
@@ -209,13 +221,13 @@ export default function SubTask({ index, task_name, onCreateAnotherSubtaskClick,
                 onClick={handleAddSubtask}
                 disabled={depth > 3}
         >
-          Create another subtask
+          Create subtask for this task
         </Button>
       </Grid>
       {subtaskList.map((subtask, index) => (
         <SubTask
           key={index}
-          index={index + 1}
+          index={index}
           task_name={subtask.subtask_name}
           onCreateAnotherSubtaskClick={onCreateAnotherSubtaskClick}
           subtasks={subtask.subtasks}

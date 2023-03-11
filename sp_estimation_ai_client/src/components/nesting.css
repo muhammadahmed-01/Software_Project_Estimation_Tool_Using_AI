@@ -20,8 +20,8 @@
     border-left-color: purple;
 }
 
-.task::before .circle,
-.subtask::before .circle {
+.task .circle,
+.subtask .circle {
     content: "";
     width: 10px;
     height: 10px;
