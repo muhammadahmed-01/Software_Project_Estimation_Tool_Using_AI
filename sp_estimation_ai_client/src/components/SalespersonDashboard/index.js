@@ -24,7 +24,7 @@
 // import MenuItem from '@mui/material/MenuItem';
 // import MenuList from '@mui/material/MenuList';
 // import {useNavigate, useLocation} from 'react-router-dom'
-// import EstimatorReviewedTasks from "../EstimatorReviewedTasks";
+// import EstimatorTasks from "../EstimatorTasks";
 // import {useEffect, useState} from "react";
 //
 // const mdTheme = createTheme();
@@ -42,11 +42,11 @@
 //   const status = searchParams.get("status");
 //   let component;
 //   if (status === "rejected") {
-//     component = <EstimatorReviewedTasks status="Rejected"/>;
+//     component = <EstimatorTasks status="Rejected"/>;
 //   } else if (status === "pending") {
 //     component = <PendingTasks />;
 //   } else {
-//     component = <EstimatorReviewedTasks status="Approved"/>;
+//     component = <EstimatorTasks status="Approved"/>;
 //   }
 //   // console.log("status = ", status)
 //

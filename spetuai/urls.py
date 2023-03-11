@@ -1,4 +1,4 @@
-"""bzkRestApis URL Configuration
+"""spetuai URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/4.1/topics/http/urls/
@@ -15,8 +15,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, re_path, include
+from . import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    re_path(r'^', include('tutorials.urls')),
+    re_path(r'api/', include('estimator.urls')),
+    re_path(r'api/', include('estimationReviewer.urls')),
+    re_path(r'api/', include('estimationReviewer.urls')),
+    re_path(r'api/users', views.get_users),
 ]

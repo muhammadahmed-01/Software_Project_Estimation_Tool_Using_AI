@@ -1,5 +1,5 @@
-import * as React from 'react';
-import EstimatorSidebar from '../Sidebar/EstimatorSidebar'
+import * as React from "react";
+import EstimatorSidebar from "../Sidebar/EstimatorSidebar";
 import Box from "@mui/material/Box";
 import {
   Container,
@@ -9,36 +9,42 @@ import {
   Typography
 } from "@mui/material";
 import Navbar from "../Navbar";
-import {createTheme, ThemeProvider} from "@mui/material/styles";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
 import Toolbar from "@mui/material/Toolbar";
-import Button from '@mui/material/Button';
-import ClickAwayListener from '@mui/material/ClickAwayListener';
-import Grow from '@mui/material/Grow';
-import Popper from '@mui/material/Popper';
-import MenuItem from '@mui/material/MenuItem';
-import MenuList from '@mui/material/MenuList';
-import {useNavigate, useLocation} from 'react-router-dom'
-import EstimatorReviewedTasks from "../EstimatorReviewedTasks";
+import Button from "@mui/material/Button";
+import ClickAwayListener from "@mui/material/ClickAwayListener";
+import Grow from "@mui/material/Grow";
+import Popper from "@mui/material/Popper";
+import MenuItem from "@mui/material/MenuItem";
+import MenuList from "@mui/material/MenuList";
+import { useNavigate, useLocation } from "react-router-dom";
+import EstimatorTasks from "../EstimatorTasks";
 
 const mdTheme = createTheme();
 
-const filterOptions = ['Filter', 'Squash and merge', 'Rebase and merge'];
+const filterOptions = ["Filter", "Squash and merge", "Rebase and merge"];
 
 export default function Dashboard() {
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef(null);
   const [selectedIndex, setSelectedIndex] = React.useState(0);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const status = searchParams.get("status");
+  const estimator = 1;
+  const projectID = 1;
+  const projectName = null;
   let component;
   if (status === "rejected") {
-    component = <EstimatorReviewedTasks status="Rejected" hideComment={false}/>;
+    component = <EstimatorTasks status="rejected" hideComment={false}
+                                estimator={estimator} project={projectID} />;
   } else if (status === "pending") {
-    component = <EstimatorReviewedTasks status="Pending" hideComment={true} />;
+    component = <EstimatorTasks status="pending" hideComment={true}
+                                estimator={estimator} project={projectID} />;
   } else {
-    component = <EstimatorReviewedTasks status="Approved" hideComment={false}/>;
+    component = <EstimatorTasks status="approved" hideComment={false}
+                                estimator={estimator} project={projectID} />;
   }
 
   const handleMenuItemClick = (event, index) => {
@@ -55,15 +61,15 @@ export default function Dashboard() {
   };
 
   const newEstimate = () => {
-    navigate("/new-estimate")
-  }
+    navigate("/new-estimate");
+  };
 
   return (
     <ThemeProvider theme={mdTheme}>
-      <Box sx={{display: "flex"}}>
-        <CssBaseline/>
-        <Navbar username={"John Carmack"} role={"Estimator"}/>
-        <EstimatorSidebar/>
+      <Box sx={{ display: "flex" }}>
+        <CssBaseline />
+        <Navbar username={"John Carmack"} role={"Estimator"} />
+        <EstimatorSidebar />
         <Box
           component="main"
           sx={{
@@ -72,32 +78,33 @@ export default function Dashboard() {
                 theme.palette.grey[900],
             flexGrow: 1,
             height: "100vh",
-            overflow: "auto",
+            overflow: "auto"
           }}
         >
-          <Toolbar/>
-          <Container maxWidth="lg" sx={{mt: 4, mb: 4}}>
+          <Toolbar />
+          <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
             {/* {error && <Alert variant="danger">{error}</Alert>} */}
             <Grid container spacing={3}>
-              <Typography sx={{paddingLeft: 3, paddingTop: 3}} component="h1"
-                          variant="h4" color="inherit">Grocery
-                Store</Typography>
+              <Typography sx={{ paddingLeft: 3, paddingTop: 3 }} component="h1"
+                          variant="h4" color="inherit">
+                Grocery Store
+              </Typography>
               <Grid item xs={12} md={8} lg={12}>
                 <Button variant="outlined"
-                        sx={{float: "right", marginRight: 2}}>Share</Button>
-                <Button variant="outlined" sx={{float: "right", marginRight: 2}}
+                        sx={{ float: "right", marginRight: 2 }}>Share</Button>
+                <Button variant="outlined" sx={{ float: "right", marginRight: 2 }}
                         onClick={newEstimate}>New Estimate</Button>
                 <Popper sx={{
-                  zIndex: 1,
+                  zIndex: 1
                 }} open={open} anchorEl={anchorRef.current} role={undefined}
                         transition disablePortal>
-                  {({TransitionProps, placement}) => (
+                  {({ TransitionProps, placement }) => (
                     <Grow
                       {...TransitionProps}
                       style={{
                         transformOrigin:
-                          placement === 'bottom' ? 'center top' :
-                            'center bottom',
+                          placement === "bottom" ? "center top" :
+                            "center bottom"
                       }}
                     >
                       <Paper>
@@ -121,7 +128,7 @@ export default function Dashboard() {
                   )}
                 </Popper>
               </Grid>
-              <Paper sx={{marginTop: "5%", width: 1}}>
+              <Paper sx={{ marginTop: "5%", width: 1 }}>
                 {component}
               </Paper>
             </Grid>
@@ -129,5 +136,5 @@ export default function Dashboard() {
         </Box>
       </Box>
     </ThemeProvider>
-  )
+  );
 }
