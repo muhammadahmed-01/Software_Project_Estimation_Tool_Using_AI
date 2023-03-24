@@ -28,6 +28,8 @@ export default function EstimateForm() {
   const [task_name, setTaskName] = useState("");
   const [gridList, setGridList] = useState([]);
   const [gridCount, setGridCount] = useState(1);
+  const [allSubtasks, setAllSubtasks] = useState([]);
+
 
   const onCreateAnotherSubtaskClick = (index, subtasks) => {
     const newSubtasks = [...subtasks];
@@ -38,6 +40,7 @@ export default function EstimateForm() {
       subtask_estimated_time: "",
       subtasks: []
     });
+    console.log("allSubtasks = ", allSubtasks)
     return newSubtasks;
   };
 
@@ -48,11 +51,14 @@ export default function EstimateForm() {
                task_name={task_name}
                onCreateAnotherSubtaskClick={onCreateAnotherSubtaskClick}
                subtasks={[]}
+               allSubtasks={allSubtasks}
+               setAllSubtasks={setAllSubtasks}
       />
     ));
 
     setGridList(grids);
     setGridCount(gridCount + 1);
+    console.log("grids = ", grids)
   };
 
   const Alert = React.forwardRef(function Alert(props, ref) {

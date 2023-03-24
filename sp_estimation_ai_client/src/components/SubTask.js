@@ -6,10 +6,11 @@ import EDService from "../service/estimator.service";
 import { useState } from "react";
 import PropTypes from "prop-types";
 import { css } from "@emotion/react";
-import { v4 as uuidv4 } from "uuid"; // import uuidv4
 import "./nesting.css";
 
-export default function SubTask({ index, task_name, onCreateAnotherSubtaskClick, subtasks, depth = 0 }) {
+export default function SubTask({ index, task_name, onCreateAnotherSubtaskClick,
+                                  subtasks, depth = 0, allSubtasks,
+                                  setAllSubtasks }) {
   const [skill, setSkill] = useState();
   const [complexity, setComplexity] = useState();
   const [subtask_name, setSubTaskName] = useState("");
@@ -18,7 +19,7 @@ export default function SubTask({ index, task_name, onCreateAnotherSubtaskClick,
   const [subtaskList, setSubtaskList] = useState(subtasks);
 
   const highlightIt = (e) => {
-    console.log("Highlight called with depth = ", depth)
+    // console.log("Highlight called with depth = ", depth)
     e.stopPropagation();
     setColor("#D9CEFF");
   };
@@ -111,6 +112,7 @@ export default function SubTask({ index, task_name, onCreateAnotherSubtaskClick,
   const handleAddSubtask = () => {
     const newSubtasks = onCreateAnotherSubtaskClick(index, subtaskList);
     setSubtaskList(newSubtasks);
+    setAllSubtasks([...allSubtasks, ...newSubtasks]);
   };
 
   return (
@@ -233,6 +235,8 @@ export default function SubTask({ index, task_name, onCreateAnotherSubtaskClick,
           subtasks={subtask.subtasks}
           depth={depth + 1}
           className={"subtask"}
+          allSubtasks={allSubtasks}
+          setAllSubtasks={setAllSubtasks}
         />
       ))}
     </Grid>
@@ -249,5 +253,7 @@ SubTask.propTypes = {
   task_name: PropTypes.string.isRequired,
   onCreateAnotherSubtaskClick: PropTypes.func.isRequired,
   subtasks: PropTypes.array.isRequired,
+  allSubtasks: PropTypes.array.isRequired,
+  setAllSubtasks: PropTypes.func.isRequired,
   depth: PropTypes.number
 };

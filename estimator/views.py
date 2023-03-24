@@ -17,7 +17,7 @@ from spetuai.models import Tasks
 
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 
-model = load_model('model/')
+model = load_model('model1/')
 
 scaler_task = pickle.load(open('scaler_task.sav', 'rb'))
 scaler_subtask = pickle.load(open('scaler_subtask.sav', 'rb'))
