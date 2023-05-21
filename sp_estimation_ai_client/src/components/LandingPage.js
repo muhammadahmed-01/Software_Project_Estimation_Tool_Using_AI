@@ -4,7 +4,9 @@ import React from 'react';
 
 const styles = {
     paperContainer: {
-        backgroundImage: `url(${logo})`
+        backgroundImage: `url(${logo})`,
+        backgroundSize: "cover",
+        backgroundRepeat: "no-repeat",
     }
 };
 

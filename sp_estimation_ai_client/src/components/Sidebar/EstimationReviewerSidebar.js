@@ -58,6 +58,8 @@ export default function EstimationReviewerSidebar() {
       <Divider sx={{ my: 1 }} />
       <Typography sx={{ marginLeft: "5%", textTransform: "uppercase" }}
                   variant={"body2"}>Estimators</Typography>
+
+      {/*TODO: Add API call to get all estimates of estimator*/}
       <Link to="">
         <ListItemButton>
           <ListItemIcon>
@@ -78,6 +80,8 @@ export default function EstimationReviewerSidebar() {
       <Divider sx={{ my: 1 }} />
       <Typography sx={{ marginLeft: "5%", textTransform: "uppercase" }}
                   variant={"body2"}>Projects</Typography>
+
+      {/*TODO: Add API call to get all estimates of project*/}
       <Link to="">
         <ListItemButton>
           <ListItemIcon>

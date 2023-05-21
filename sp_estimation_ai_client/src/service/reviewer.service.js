@@ -73,7 +73,19 @@ class ReviewerDataService {
   }
 
   getUsers(){
-    return http.get("/users")
+    return http.get("/users");
+  }
+
+  getEstimatorEstimates(estimator_username) {
+    return http.get("/reviewer/get-estimator-estimates", {
+      estimator_username: estimator_username
+    });
+  }
+
+  getProjectEstimates(project_name){
+    return http.get("/reviewer/get-project-estimates", {
+      project_name: project_name
+    });
   }
 
 }
