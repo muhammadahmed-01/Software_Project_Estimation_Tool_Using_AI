@@ -39,3 +39,7 @@ Skill,Complexity,task_name,subtask_name,Duration
 5,2,Billing,"API to validate and view, add or change the billing method",5
 4,1,Settings,API to authenticate the user,4
 3,1,Settings,API to validate and view or change profile settings,3
+,,,,
+,,,,
+"Skill = [1,5]",,,,
+"Complexity = [0, 2]",,,,
