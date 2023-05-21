@@ -21,6 +21,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     re_path(r'api/', include('estimator.urls')),
     re_path(r'api/', include('estimationReviewer.urls')),
-    re_path(r'api/', include('estimationReviewer.urls')),
     re_path(r'api/users', views.get_users),
 ]

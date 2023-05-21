@@ -11,6 +11,8 @@ urlpatterns = [
     path('reviewer/reject-estimate', views.reject_estimate),
     path('reviewer/update-estimate', views.update_estimate),
     path('reviewer/update-assignee', views.update_assignee),
+    path('reviewer/get-estimator-estimates', views.get_estimator_estimates),
+    path('reviewer/get-project-estimates', views.get_project_estimates),
 ]
 
 

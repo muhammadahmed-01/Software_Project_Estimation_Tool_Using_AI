@@ -6,7 +6,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.db.models import F
 from rest_framework.decorators import api_view
 
-from spetuai.models import Tasks, User
+from spetuai.models import Tasks, User, Project
 
 
 @csrf_exempt
@@ -162,3 +162,36 @@ def update_assignee(request):
     task.save()
     
     return JsonResponse({'status': 'success'})
+
+@api_view(['GET'])
+def get_estimator_estimates(request):
+    if request.method == "GET":
+        estimator_username = request.GET.get('estimator_username', None)
+        if estimator_username is None:
+            return JsonResponse({'error': 'Estimator username not provided'}, status=400)
+        
+        estimator = User.objects.filter(username=estimator_username)
+        
+        tasks = Tasks.objects.filter(assignee_id=estimator.user_id)\
+            .annotate(assignee_username=F('assignee_id__username'))
+        data = {'tasks': list(tasks.values())}
+        return JsonResponse(data, status=200)
+    else:
+        return JsonResponse({'error': 'Invalid request method'})
+
+
+@api_view(['GET'])
+def get_project_estimates(request):
+    if request.method == "GET":
+        project_name = request.GET.get('project_name', None)
+        if project_name is None:
+            return JsonResponse({'error': 'Estimator username not provided'}, status=400)
+        
+        project = Project.objects.filter(name=project_name)
+        
+        tasks = Tasks.objects.filter(project_id=project.project_id) \
+            .annotate(assignee_username=F('assignee_id__username'))
+        data = {'tasks': list(tasks.values())}
+        return JsonResponse(data, status=200)
+    else:
+        return JsonResponse({'error': 'Invalid request method'})
