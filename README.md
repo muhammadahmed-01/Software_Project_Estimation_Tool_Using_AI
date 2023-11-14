@@ -1,19 +1,21 @@
 # Project Estimation Tool
 
-🚀 Welcome to the Project Estimation Tool! This web-based application is designed to provide quick and accurate time-related estimations for client projects, with a focus on web application projects.
+🚀 Swiftly estimate project timelines with AI-powered precision!
+
+The Project Estimation Tool is a web-based application designed for quick and accurate time estimations in the IT sector. Say goodbye to the stress of estimating new projects—our tool leverages AI to learn and suggest estimates based on your project history.
 
 ## Goal
 
 The primary goal of this tool is to streamline the process of estimating project timelines, especially in scenarios where company resources are occupied with ongoing projects. By leveraging AI, the tool aims to learn from each project, making future estimations more efficient and accurate.
 
-## Key Features
+## 🎯 Key Features
 
 - 💡 User can enter tasks and subtasks along with their completion time.
 - 🤖 AI/ML model suggests estimated time for subtasks based on user input.
 - 🔄 AI/ML model learns and adapts with each project.
 - 📈 Enables users to quickly calculate estimates and provide quotes to clients.
 
-## Stakeholders
+## 👥 Stakeholders
 
 This project involves three key stakeholders:
 1. 🤝 **Salesperson:** Meets with the client, discusses project requirements, and submits a request to the estimator.
@@ -22,20 +24,20 @@ This project involves three key stakeholders:
 
 ## List of Features
 
-### 4.1 User-friendly Features
+### 💡 4.1 User-friendly Features
 
 - **User Input:** Enter tasks and subtasks with completion times.
 - **AI/ML Suggestions:** Model suggests estimated times.
 - **Learning:** AI/ML model learns and relearns from user input.
 
-### 4.2 Functional Requirements
+### 🌐 4.2 Functional Requirements
 
 - **Estimate Management:** Read, modify, delete estimates of tasks and subtasks.
 - **User Input:** Enter estimates for tasks and subtasks.
 - **Model Functionality:** Model suggests estimates considering various factors.
 - **Storage:** Learned estimates are stored in a database.
 
-## Getting Started
+## 🚀 Getting Started
 
 1. **Clone the repository:**
 
